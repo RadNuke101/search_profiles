@@ -1,23 +1,18 @@
 .container {
-    margin: 20px;
-  }
-  
-  #search {
-    width: 300px;
-    padding: 10px;
-  }
-  
-  button {
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    margin-top: 10px;
-  }
-  
+  margin: 20px;
+}
+ #search {
+  width: 300px;
+  padding: 10px;
+}
+ button {
+  padding: 10px;
+  cursor: pointer;
+}
+ ul {
+  list-style-type: none;
+  padding: 0;
+}
+ li {
+  margin-top: 10px;
+}

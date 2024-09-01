@@ -705,13 +705,25 @@ app.get('/search', async (req, res) => {
         }
     ];
 
+
     //const regex = new RegExp(`\\b${keyword}\\b`, 'i'); // whole word search
 
     //const filteredResults = facultyData.filter(faculty => regex.test(faculty.research.toLowerCase()));
 
-    const filteredResults = facultyData.filter(faculty => faculty.research.toLowerCase().includes(keyword));
+    //const filteredResults = facultyData.filter(faculty => faculty.research.toLowerCase().includes(keyword));
 
-    res.json(filteredResults);
+    const highlightedResults = facultyData
+        .filter(faculty => faculty.research.toLowerCase().includes(keyword))
+        .map(faculty => {
+            const regex = new RegExp(`(${keyword})`, 'gi');
+            const highlightedResearch = faculty.research.replace(regex, "<mark>$1</mark>"); // highlight keyword
+            return {
+                ...faculty,
+                research: highlightedResearch
+            };
+        });
+
+    res.json(highlightedResults);
 });
 
 app.listen(port, () => {
